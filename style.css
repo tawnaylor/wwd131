@@ -7,9 +7,9 @@
   
   /* Body and page setup */
   body {
-    background-color: #f9f9f9;
-    font-family: 'Times New Roman', serif;
-    font-weight: bold;
+    background-color: white;
+    color: black;
+    font-family: sans-serif;
   }
   
   .container {
@@ -130,4 +130,64 @@
     color: #4f81bd;
     letter-spacing: 3px;
     margin-top: 5px;
+  }
+
+  /* Dark Theme */
+  body.dark {
+    background-color: #333;
+    color: white;
+  }
+
+  body.dark h2 {
+    color: #7DC8F7; /* Lighter blue for better contrast */
+  }
+
+  /* Ensure theme-specific styles apply only when .dark is active */
+  body.dark .container-box {
+    background-color: #444;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  body.dark .paragraph,
+  body.dark .italic-text,
+  body.dark .list {
+    color: #ddd;
+  }
+
+  body.dark .subtitle {
+    color: #9ACDFF;
+  }
+
+  body.dark .line {
+    border-top: 1px solid #555;
+  }
+
+  body.dark .logo img {
+    max-width: 200px; /* Set size for dark theme logo */
+    height: auto;
+  }
+
+  /* Dark theme styles */
+  body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.dark-theme .mission-box {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+
+  body.dark-theme .line {
+    border-color: #ffffff;
+  }
+
+  body.dark-theme .list li {
+    color: #ffffff;
+  }
+
+  /* Header Logo */
+  #logo {
+    max-width: 200px; /* Reduced size for header logo */
+    height: auto;
   }
