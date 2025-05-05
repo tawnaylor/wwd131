@@ -86,9 +86,23 @@
             font-family: 'Press Start 2P', monospace; /* 8-bit arcade font */
             font-weight: bolder; /* Make the START text bolder */
         }
+
+        /* Coin flip animation */
+        @keyframes coin-flip {
+            0% { transform: translateX(-50%) rotateY(0deg); }
+            50% { transform: translateX(-50%) rotateY(180deg); }
+            100% { transform: translateX(-50%) rotateY(360deg); }
+        }
+
+        .coin-flip {
+            animation: coin-flip 1s ease-in-out;
+        }
     </style>
 </head>
 <body>
+    <!-- Add onclick event to trigger coin flip -->
+    <img src="images/coin.png" alt="Coin" id="coin" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); max-width: 120px; height: auto;" onclick="flipCoin()">
+    
     <!-- Main Content -->
     <h1>Welcome to WDD131 Projects</h1>
     <p>Select a folder to explore its contents.</p>
@@ -102,5 +116,15 @@
 
     <!-- Large 8-bit START text -->
     <div class="start-text">CHOOSE YOUR CHARACTER</div>
+
+    <script>
+        function flipCoin() {
+            const coin = document.getElementById('coin');
+            coin.classList.add('coin-flip');
+            coin.addEventListener('animationend', () => {
+                coin.classList.remove('coin-flip');
+            }, { once: true });
+        }
+    </script>
 </body>
 </html>
