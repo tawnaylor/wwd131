@@ -1,0 +1,13 @@
+body {
+    /* Replace gradient with a 16-bit style background */
+    background: url('16bit-forest-castle.png'); /* 16-bit style background image */
+    background-size: cover; /* Ensure the background covers the screen */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-position: center; /* Center the background */
+    height: 100vh;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+}
