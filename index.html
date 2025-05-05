@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mission Statement</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="mission.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to WDD131 Projects</title>
+    <style>
+        /* Basic styling for navigation tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px;
+        }
+        .nav-tabs a {
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #4f81bd;
+            color: white;
+            border-radius: 5px;
+        }
+        .nav-tabs a:hover {
+            background-color: #3a66a1;
+        }
+    </style>
 </head>
 <body>
-  <!-- Theme Selector -->
-  <label for="theme">Choose Theme:</label>
-  <select id="theme">
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-  </select>
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <a href="media-queries/">Media Queries Project</a>
+        <a href="mission/">Mission Project</a>
+        <a href="sandbox/">Sandbox Projects</a>
+        <!-- Add more folders as needed -->
+    </nav>
 
-  <!-- Logo -->
-  <header>
-    <img id="logo" src="images/byui-logo_blue.webp" alt="BYUI Logo" />
-    <h2>Our Mission Subtitle</h2>
-  </header>
-
-  <!-- Page Content -->
-  <main>
-    <p>We are committed to excellence in education...</p>
-  </main>
-
-  <div class="outer-container">
-    <div class="container-box">
-      <div class="mission-box">
-        <h1 class="main-title">MISSION STATEMENT</h1>
-        <div class="subtitle"> BRIGHAM YOUNG UNIVERSITY-IDAHO
-          <hr class="line">
-        </div>
-
-        <p class="paragraph">
-          Brigham Young University-Idaho was founded and is supported and guided by The Church of Jesus Christ of Latter-day Saints. Its mission is to develop disciples of Jesus Christ who are leaders in their homes, the Church, and their communities.
-        </p>
-
-        <p class="italic-text">The university does this by:</p>
-
-        <ol class="list">
-          <li>
-            Building testimonies of the restored gospel of Jesus Christ and fostering its principles in a wholesome academic, cultural, and social environment.
-          </li>
-          <li>
-            Providing a high-quality education that prepares students of diverse interests and abilities for lifelong learning and employment.
-          </li>
-          <li>
-            Serving as many students as possible within resource constraints.
-          </li>
-          <li>
-            Delivering education that is affordable for students and the Church.
-          </li>
-        </ol>
-
-        <div class="logo">
-          <img src="images/byui-logo_blue.webp" alt="BYU-IDAHO Logo">
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Main Content -->
+    <h1>Welcome to WDD131 Projects</h1>
+    <p>Select a folder above to explore its contents.</p>
 </body>
 </html>
