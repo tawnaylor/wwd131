@@ -1,0 +1,21 @@
+/* Import the Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tagesschrift&display=swap');
+
+/* Apply the font to all elements */
+* {
+	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+}
+
+img {
+	max-width: 100%;
+	width: 250px;
+	height: 250px;
+}
+
+body {
+	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+}
