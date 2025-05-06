@@ -1,21 +1,51 @@
 /* Import the Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tagesschrift&display=swap');
 
-/* Apply the font to all elements */
 * {
-	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+	font-family: 'Tagesschrift', sans-serif;
 }
 
 img {
 	max-width: 100%;
 	width: 250px;
 	height: 250px;
+	border: 1px solid #ddd; /* Light border to resemble a page edge */
+	border-radius: 5px; /* Slight rounding for a page-like effect */
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Drop shadow for depth */
+	background-color: #fff; /* White background for a page-like appearance */
 }
 
 body {
-	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+	font-family: 'Tagesschrift', sans-serif;
+	background-color: #f5fff5; /* Light mint green */
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Roboto', 'Tagesschrift', sans-serif;
+	font-family: 'Tagesschrift', sans-serif;
+}
+
+header, footer {
+	background-color: lightblue;
+}
+
+@media screen and (min-width: 700px) {
+	.gallery {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+	.gallery img {
+		max-width: 100%;
+		width: auto;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.gallery {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.menu-button {
+		display: none;
+	}
 }
