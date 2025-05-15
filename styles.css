@@ -1,6 +1,5 @@
 body {
-    /* Replace gradient with a 16-bit style background */
-    background: url('16bit-forest-castle.png'); /* 16-bit style background image */
+    background: #b8b8bd; /* Light grey background */
     background-size: cover; /* Ensure the background covers the screen */
     background-repeat: no-repeat; /* Prevent tiling */
     background-position: center; /* Center the background */
