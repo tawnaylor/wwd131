@@ -51,3 +51,55 @@ document.addEventListener('click', (event) => {
         dropdownMenu.style.display = 'none';
     }
 });
+
+// Function to handle window resize and toggle the "hide" class on the menu
+function handleResize() {
+    if (window.innerWidth > 1000) {
+        dropdownMenu.classList.remove('hide');
+    } else {
+        dropdownMenu.classList.add('hide');
+    }
+}
+
+// Add event listener for window resize
+window.addEventListener('resize', handleResize);
+
+// Call handleResize immediately on page load
+handleResize();
+
+// Create the overlay for the pop-out effect
+const overlay = document.createElement('div');
+overlay.id = 'imageOverlay';
+overlay.style.position = 'fixed';
+overlay.style.top = '0';
+overlay.style.left = '0';
+overlay.style.width = '100%';
+overlay.style.height = '100%';
+overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+overlay.style.display = 'none';
+overlay.style.justifyContent = 'center';
+overlay.style.alignItems = 'center';
+overlay.style.zIndex = '1000';
+document.body.appendChild(overlay);
+
+// Create the image container for the pop-out
+const popOutImage = document.createElement('img');
+popOutImage.style.maxWidth = '200%'; // Make the image much larger
+popOutImage.style.maxHeight = '200%'; // Make the image much larger
+overlay.appendChild(popOutImage);
+
+// Add click event to all images to enable pop-out
+const images = document.querySelectorAll('img');
+images.forEach(image => {
+    image.addEventListener('click', () => {
+        popOutImage.src = image.src;
+        overlay.style.display = 'flex';
+    });
+});
+
+// Close the pop-out when clicking outside the image
+overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+        overlay.style.display = 'none';
+    }
+});
