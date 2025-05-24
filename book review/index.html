@@ -270,11 +270,10 @@
       const text = document.getElementById('parentReviewText').value.trim();
       const user = document.getElementById('parentReviewUser').value.trim() || "Anonymous";
       const stars = document.getElementById('parentReviewStars').value;
-      let userDisplay = user + " (parent)";
       if (text && currentReviewTarget) {
         const reviewDiv = document.createElement('div');
         reviewDiv.className = 'parent-review';
-        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${userDisplay}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
+        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${user}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
         currentReviewTarget.appendChild(reviewDiv);
         document.getElementById('parentReviewModal').style.display = 'none';
       }
