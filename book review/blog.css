@@ -2,22 +2,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
 }
 
 body {
   padding: 20px;
-  background: #e0f7fa; /* light robin's egg blue */
+  background: #fff8f0; /* subtle off-white for gold theme */
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+  color: #473144;
 }
 
 header {
   text-align: center;
   margin-bottom: 20px;
+  background: #EFC69B;
+  color: #473144;
+  padding: 20px 0 10px 0;
 }
 
 header h1 {
   font-size: 2em;
   margin-bottom: 10px;
+  font-family: 'Noto Sans', Impact, serif;
+  color: #AF1B3F;
+  letter-spacing: 2px;
 }
 
 nav {
@@ -25,6 +33,16 @@ nav {
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
+}
+
+nav a {
+  color: #AF1B3F;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #473144;
 }
 
 .search-area {
@@ -37,6 +55,41 @@ nav {
 .search-area button {
   padding: 8px;
   margin: 5px;
+  border-radius: 4px;
+  border: 1px solid #EFC69B;
+  font-family: inherit;
+}
+
+.search-area button,
+#showBookModalBtn,
+#showBookSearchModalBtn,
+.submit-found-book-btn {
+  background: #AF1B3F;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 12px 18px;
+  transition: background 0.2s;
+}
+#showBookModalBtn {
+  background: #EFC69B;
+  color: #473144;
+  margin-bottom: 10px;
+}
+#showBookSearchModalBtn {
+  background: #AF1B3F;
+  color: #fff;
+  margin-left: 10px;
+}
+.search-area button:hover,
+#showBookModalBtn:hover,
+#showBookSearchModalBtn:hover,
+.submit-found-book-btn:hover {
+  background: #473144;
+  color: #fff;
 }
 
 .content {
@@ -105,21 +158,28 @@ nav {
 
 footer {
   margin-top: 50px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #EFC69B;
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
   font-size: 0.9em;
-  background: #f8f8f8;
+  background: #EFC69B;
+  color: #473144;
 }
 
 .footer-nav a,
 .footer-right a {
   margin: 0 10px;
   text-decoration: none;
-  color: #444;
+  color: #AF1B3F;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.footer-nav a:hover,
+.footer-right a:hover {
+  color: #473144;
 }
 
 .social-icons span {
@@ -133,6 +193,10 @@ footer {
   justify-content: center;
   gap: 40px;
   margin: 40px 0;
+  background: #fff8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(175,27,63,0.05);
+  border: 1px solid #EFC69B;
 }
 
 .review-buttons {
@@ -142,36 +206,18 @@ footer {
 }
 
 .review-buttons button {
-  padding: 12px 18px;
-  background: #444;
+  background: #AF1B3F;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 1em;
   border-radius: 4px;
+  padding: 12px 18px;
+  margin-bottom: 0;
+  transition: background 0.2s;
 }
-
-#showBookModalBtn {
-  padding: 12px 18px;
-  background: #4a90e2;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-#showBookSearchModalBtn {
-  padding: 12px 18px;
-  background: #0097a7;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-bottom: 10px;
-  margin-left: 10px;
+.review-buttons button:hover {
+  background: #473144;
 }
 
 .book-cover-image img {
@@ -179,7 +225,7 @@ footer {
   width: 150px;
   height: 220px;
   object-fit: cover;
-  border: 1px solid #ccc;
+  border: 2px solid #EFC69B;
   background: #eee;
   border-radius: 6px;
 }
@@ -193,22 +239,30 @@ footer {
 .book-info-panel h2 {
   margin-bottom: 10px;
   font-size: 1.3em;
+  font-family: 'Noto Sans', Impact, serif;
+  color: #131b23;
 }
 
 .book-info-panel p {
   margin-bottom: 6px;
+  color: #473144;
+}
+
+.book h3 {
+  color: #131b23;
+  font-family: 'Noto Sans', Impact, serif;
 }
 
 .page-divider {
   border: none;
-  border-top: 2px solid #bbb;
+  border-top: 2px solid #EFC69B;
   margin: 30px 0;
   width: 100%;
 }
 
 .review-divider {
   border: none;
-  border-top: 2px dashed #b2ebf2;
+  border-top: 2px dashed #EFC69B;
   margin: 30px 0;
   width: 100%;
 }
@@ -218,7 +272,7 @@ footer {
   position: fixed;
   z-index: 1000;
   left: 0; top: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(71,49,68,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,16 +280,16 @@ footer {
 
 .modal-content,
 .modal-content.modal-center {
-  /* Centered by flex on .modal, but ensure margin auto for fallback */
   margin: auto;
-  background: #fff;
+  background: #fff8f0;
   padding: 24px 20px 16px 20px;
   border-radius: 8px;
   min-width: 300px;
   max-width: 90vw;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 16px rgba(175,27,63,0.12);
   position: relative;
   display: block;
+  border: 2px solid #EFC69B;
 }
 
 .close {
@@ -244,24 +298,27 @@ footer {
   top: 10px;
   font-size: 1.5em;
   cursor: pointer;
+  color: #AF1B3F;
 }
 
 .parent-review {
-  background: #f3f7fa;
-  border-left: 4px solid #4a90e2;
+  background: #fffbe7;
+  border-left: 4px solid #EFC69B;
   margin: 12px 0;
   padding: 10px 14px;
   border-radius: 4px;
   font-size: 1em;
+  color: #473144;
 }
 
 .kids-review {
   background: #fffbe7;
-  border-left: 4px solid #f5b041;
+  border-left: 4px solid #AF1B3F;
   margin: 12px 0;
   padding: 10px 14px;
   border-radius: 4px;
   font-size: 1em;
+  color: #473144;
 }
 
 .review-header {
@@ -274,11 +331,11 @@ footer {
 
 .review-user {
   font-weight: bold;
-  color: #333;
+  color: #AF1B3F;
 }
 
 .review-stars {
-  color: #f5b041;
+  color: #EFC69B;
   font-size: 1.1em;
   letter-spacing: 1px;
 }
@@ -298,7 +355,6 @@ footer {
   }
 }
 
-/* Responsive for mobile */
 @media (max-width: 700px) {
   .book-review-section {
     flex-direction: column;
@@ -310,31 +366,5 @@ footer {
   }
 }
 
-.book-search-modal .modal-content {
-  max-width: 500px;
-}
-
-.book {
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 12px 16px;
-  margin-bottom: 12px;
-}
-
-.book img {
-  display: block;
-  margin: 8px 0;
-  border-radius: 4px;
-}
-
-.submit-found-book-btn {
-  padding: 8px 14px;
-  background: #4a90e2;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 8px;
-}
+/* Import Noto Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
