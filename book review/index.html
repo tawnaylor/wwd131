@@ -18,8 +18,20 @@
     </nav>
   </header>
 
+  <!-- Book Search Modal -->
+  <div id="bookSearchModal" class="modal" style="display:none;">
+    <div class="modal-content modal-center" style="max-width:500px;">
+      <span class="close" id="closeBookSearchModalBtn">&times;</span>
+      <h3>Search for a Book</h3>
+      <input type="text" id="searchInput" placeholder="Search for a book..." style="width:100%;margin-bottom:8px;" />
+      <button id="searchBooksBtn" style="margin-bottom:12px;">Search Books</button>
+      <div class="results" id="resultsContainer"></div>
+    </div>
+  </div>
+
   <div style="text-align:center; margin-bottom: 20px;">
     <button id="showBookModalBtn">Submit Book</button>
+    <button id="showBookSearchModalBtn">Book Search</button>
   </div>
 
   <!-- Book Submission Modal -->
@@ -35,16 +47,9 @@
     </div>
   </div>
 
-  <section class="search-area">
-    <input type="text" placeholder="Search books..." />
-    <select>
-      <option>Title</option>
-      <option>Author</option>
-      <option>Genre</option>
-    </select>
-    <button>Search Books</button>
-  </section>
   <hr class="page-divider" />
+
+  <div id="bookReviewContainer"></div>
 
   <div id="bookReviewContainer"></div>
     <section class="book-review-section">
@@ -312,6 +317,78 @@
 
       document.getElementById('bookModal').style.display = 'none';
     };
+
+    // Book Search Modal logic
+    document.getElementById('showBookSearchModalBtn').onclick = function() {
+      document.getElementById('bookSearchModal').style.display = 'flex';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('resultsContainer').innerHTML = '';
+    };
+    document.getElementById('closeBookSearchModalBtn').onclick = function() {
+      document.getElementById('bookSearchModal').style.display = 'none';
+    };
+
+    // Google Books Search - now works in the modal
+    document.getElementById("searchBooksBtn").onclick = searchBooks;
+
+    // Show reviews if search is cleared in modal
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const resultsContainer = document.getElementById("resultsContainer");
+      if (this.value.trim() === "") {
+        resultsContainer.innerHTML = "";
+      }
+    });
+
+    async function searchBooks() {
+      const query = document.getElementById("searchInput").value.trim();
+      const resultsContainer = document.getElementById("resultsContainer");
+      resultsContainer.innerHTML = "";
+
+      if (!query) {
+        resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
+        return;
+      }
+
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
+      );
+
+      const data = await response.json();
+
+      if (!data.items || data.items.length === 0) {
+        resultsContainer.innerHTML = "<p>No results found.</p>";
+        return;
+      }
+
+      data.items.forEach(item => {
+        const book = item.volumeInfo;
+        const title = book.title || "No title";
+        const authors = book.authors ? book.authors.join(", ") : "Unknown author";
+        const thumbnail = book.imageLinks?.thumbnail || "";
+
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+        bookDiv.style.marginBottom = "16px";
+        bookDiv.innerHTML = `
+          <h3>${title}</h3>
+          <p><strong>Author(s):</strong> ${authors}</p>
+          ${thumbnail ? `<img src="${thumbnail}" alt="${title}" style="max-width:100px;"/>` : ""}
+          <br>
+          <button class="submit-found-book-btn">Submit This Book</button>
+        `;
+        // Add submit event for this book
+        bookDiv.querySelector('.submit-found-book-btn').onclick = function() {
+          // Prefill the submit book modal with found book info
+          document.getElementById('bookTitle').value = title;
+          document.getElementById('bookAuthor').value = authors;
+          document.getElementById('bookGenre').value = book.categories ? book.categories.join(", ") : "";
+          document.getElementById('bookCover').value = thumbnail;
+          document.getElementById('bookModal').style.display = 'flex';
+          document.getElementById('bookSearchModal').style.display = 'none';
+        };
+        resultsContainer.appendChild(bookDiv);
+      });
+    }
 
     // Optional: Close modal when clicking outside modal content
     window.onclick = function(event) {

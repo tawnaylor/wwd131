@@ -162,6 +162,18 @@ footer {
   margin-bottom: 10px;
 }
 
+#showBookSearchModalBtn {
+  padding: 12px 18px;
+  background: #0097a7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
 .book-cover-image img {
   display: block;
   width: 150px;
@@ -296,4 +308,33 @@ footer {
   .book-info-panel {
     max-width: 100%;
   }
+}
+
+.book-search-modal .modal-content {
+  max-width: 500px;
+}
+
+.book {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.book img {
+  display: block;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.submit-found-book-btn {
+  padding: 8px 14px;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 8px;
 }
