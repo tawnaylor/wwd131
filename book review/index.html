@@ -426,6 +426,191 @@
         kidsModal.style.display = 'none';
       }
     };
+
+    // --- Persistence helpers ---
+    function saveBooksToStorage() {
+      const books = [];
+      document.querySelectorAll('.book-review-section').forEach((section) => {
+        const info = section.querySelector('.book-info-panel');
+        const title = info.querySelector('h2').textContent;
+        const author = info.querySelector('p:nth-child(2)').textContent.replace('Author:', '').trim();
+        const genre = info.querySelector('p:nth-child(3)').textContent.replace('Genre:', '').trim();
+        const date = info.querySelector('p:nth-child(4)').textContent.replace('Date of Submission:', '').trim();
+        const avg = info.querySelector('p:nth-child(5)').textContent.replace('Average Rating:', '').trim();
+        const cover = section.querySelector('.book-cover-image img').getAttribute('src');
+        // Reviews
+        const reviewsDiv = section.nextElementSibling;
+        const reviews = [];
+        reviewsDiv.querySelectorAll('.parent-review, .kids-review').forEach(r => {
+          reviews.push({
+            type: r.classList.contains('parent-review') ? 'parent' : 'kids',
+            html: r.innerHTML
+          });
+        });
+        books.push({ title, author, genre, date, avg, cover, reviews });
+      });
+      localStorage.setItem('bookshelf_books', JSON.stringify(books));
+    }
+
+    function loadBooksFromStorage() {
+      const books = JSON.parse(localStorage.getItem('bookshelf_books') || '[]');
+      const container = document.getElementById('bookReviewContainer');
+      container.innerHTML = '';
+      books.forEach(book => {
+        const section = document.createElement('section');
+        section.className = 'book-review-section';
+        section.innerHTML = `
+          <div class="review-buttons">
+            <button>Parents Review</button>
+            <button>Kids Review</button>
+          </div>
+          <div class="book-cover-image">
+            <img src="${book.cover}" alt="Book Cover" />
+          </div>
+          <div class="book-info-panel">
+            <h2>${book.title}</h2>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Genre:</strong> ${book.genre}</p>
+            <p><strong>Date of Submission:</strong> ${book.date}</p>
+            <p><strong>Average Rating:</strong> ${book.avg}</p>
+          </div>
+        `;
+        const reviewsDiv = document.createElement('div');
+        reviewsDiv.className = 'submitted-reviews';
+        (book.reviews || []).forEach(r => {
+          const div = document.createElement('div');
+          div.className = r.type === 'parent' ? 'parent-review' : 'kids-review';
+          div.innerHTML = r.html;
+          reviewsDiv.appendChild(div);
+        });
+        // Insert at the end to preserve order (oldest at bottom, newest at top)
+        container.appendChild(section);
+        container.appendChild(reviewsDiv);
+        // Add event listeners for review buttons
+        section.querySelector('.review-buttons button:first-child').addEventListener('click', function() {
+          currentReviewTarget = section.nextElementSibling;
+          document.getElementById('parentReviewModal').style.display = 'block';
+          document.getElementById('parentReviewText').value = '';
+          document.getElementById('parentReviewUser').value = '';
+          document.getElementById('parentReviewStars').value = '5';
+        });
+        section.querySelector('.review-buttons button:last-child').addEventListener('click', function() {
+          currentReviewTarget = section.nextElementSibling;
+          document.getElementById('kidsReviewModal').style.display = 'block';
+          document.getElementById('kidsReviewText').value = '';
+          document.getElementById('kidsReviewUser').value = '';
+          document.getElementById('kidsReviewStars').value = '5';
+        });
+        // Divider
+        const divider = document.createElement('hr');
+        divider.className = 'review-divider';
+        container.appendChild(divider);
+      });
+    }
+
+    // --- Patch all book/review creation to save ---
+    function patchSaveOnBookAdd() {
+      // Patch book submission
+      const origSubmitBookBtn = document.getElementById('submitBookBtn').onclick;
+      document.getElementById('submitBookBtn').onclick = function() {
+        if (origSubmitBookBtn) origSubmitBookBtn();
+        setTimeout(saveBooksToStorage, 100);
+      };
+      // Patch review submission
+      const origSubmitParentReviewBtn = document.getElementById('submitParentReviewBtn').onclick;
+      document.getElementById('submitParentReviewBtn').onclick = function() {
+        if (origSubmitParentReviewBtn) origSubmitParentReviewBtn();
+        setTimeout(saveBooksToStorage, 100);
+      };
+      const origSubmitKidsReviewBtn = document.getElementById('submitKidsReviewBtn').onclick;
+      document.getElementById('submitKidsReviewBtn').onclick = function() {
+        if (origSubmitKidsReviewBtn) origSubmitKidsReviewBtn();
+        setTimeout(saveBooksToStorage, 100);
+      };
+    }
+
+    // --- On page load, load books/reviews from storage ---
+    window.addEventListener('DOMContentLoaded', function() {
+      loadBooksFromStorage();
+      patchSaveOnBookAdd();
+    });
+
+    // --- After any Google Books submission, save ---
+    let origSearchBooks = window.searchBooks;
+    window.searchBooks = async function() {
+      if (origSearchBooks) await origSearchBooks();
+      // Patch submit buttons in search results
+      document.querySelectorAll('.submit-found-book-btn').forEach(btn => {
+        btn.onclick = function() {
+          document.getElementById('bookTitle').value = btn.parentElement.querySelector('h3').textContent;
+          document.getElementById('bookAuthor').value = btn.parentElement.querySelector('p').textContent.replace('Author(s):', '').trim();
+          document.getElementById('bookGenre').value = '';
+          const img = btn.parentElement.querySelector('img');
+          document.getElementById('bookCover').value = img ? img.src : '';
+          document.getElementById('bookModal').style.display = 'flex';
+          document.getElementById('bookSearchModal').style.display = 'none';
+          // Save after book is submitted (handled by patchSaveOnBookAdd)
+        };
+      });
+    }
+
+    // --- Insert new book at the top and save ---
+    // Patch the book submission logic to insert at the top
+    const origBookBtn = document.getElementById('submitBookBtn').onclick;
+    document.getElementById('submitBookBtn').onclick = function() {
+      const title = document.getElementById('bookTitle').value.trim() || "Untitled";
+      const author = document.getElementById('bookAuthor').value.trim() || "Unknown";
+      const genre = document.getElementById('bookGenre').value.trim() || "Unknown";
+      const cover = document.getElementById('bookCover').value.trim() || "https://via.placeholder.com/150x220?text=Book+Cover";
+      const today = new Date();
+      const dateStr = today.toISOString().split('T')[0];
+
+      // Create new book review section
+      const section = document.createElement('section');
+      section.className = 'book-review-section';
+      section.innerHTML = `
+        <div class="review-buttons">
+          <button>Parents Review</button>
+          <button>Kids Review</button>
+        </div>
+        <div class="book-cover-image">
+          <img src="${cover}" alt="Book Cover" />
+        </div>
+        <div class="book-info-panel">
+          <h2>${title}</h2>
+          <p><strong>Author:</strong> ${author}</p>
+          <p><strong>Genre:</strong> ${genre}</p>
+          <p><strong>Date of Submission:</strong> ${dateStr}</p>
+          <p><strong>Average Rating:</strong> ★★★★☆</p>
+        </div>
+      `;
+      const reviewsDiv = document.createElement('div');
+      reviewsDiv.className = 'submitted-reviews';
+
+      // Insert at the top
+      const container = document.getElementById('bookReviewContainer');
+      container.insertBefore(reviewsDiv, container.firstChild);
+      container.insertBefore(section, reviewsDiv);
+
+      // Add event listeners for new review buttons
+      section.querySelector('.review-buttons button:first-child').addEventListener('click', function() {
+        currentReviewTarget = section.nextElementSibling;
+        document.getElementById('parentReviewModal').style.display = 'block';
+        document.getElementById('parentReviewText').value = '';
+        document.getElementById('parentReviewUser').value = '';
+        document.getElementById('parentReviewStars').value = '5';
+      });
+      section.querySelector('.review-buttons button:last-child').addEventListener('click', function() {
+        currentReviewTarget = section.nextElementSibling;
+        document.getElementById('kidsReviewModal').style.display = 'block';
+        document.getElementById('kidsReviewText').value = '';
+        document.getElementById('kidsReviewUser').value = '';
+        document.getElementById('kidsReviewStars').value = '5';
+      });
+
+      document.getElementById('bookModal').style.display = 'none';
+      setTimeout(saveBooksToStorage, 100);
+    };
   </script>
 </body>
 </html>
