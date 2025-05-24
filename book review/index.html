@@ -202,6 +202,21 @@
       <h3>Submit Kids Review</h3>
       <input id="kidsReviewUser" type="text" style="width:100%;margin-bottom:8px;" placeholder="Your name" />
       <div style="margin-bottom:8px;">
+        <label>Age: </label>
+        <select id="kidsReviewAge" style="margin-right:8px;">
+          <option value="">Select age</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+        </select>
         <label>Rating: </label>
         <select id="kidsReviewStars">
           <option value="1">★☆☆☆☆</option>
@@ -255,10 +270,11 @@
       const text = document.getElementById('parentReviewText').value.trim();
       const user = document.getElementById('parentReviewUser').value.trim() || "Anonymous";
       const stars = document.getElementById('parentReviewStars').value;
+      let userDisplay = user + " (parent)";
       if (text && currentReviewTarget) {
         const reviewDiv = document.createElement('div');
         reviewDiv.className = 'parent-review';
-        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${user}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
+        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${userDisplay}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
         currentReviewTarget.appendChild(reviewDiv);
         document.getElementById('parentReviewModal').style.display = 'none';
       }
@@ -268,11 +284,14 @@
     document.getElementById('submitKidsReviewBtn').onclick = function() {
       const text = document.getElementById('kidsReviewText').value.trim();
       const user = document.getElementById('kidsReviewUser').value.trim() || "Anonymous";
+      const age = document.getElementById('kidsReviewAge').value;
       const stars = document.getElementById('kidsReviewStars').value;
+      let userDisplay = user;
+      if (age) userDisplay += ` (age ${age})`;
       if (text && currentReviewTarget) {
         const reviewDiv = document.createElement('div');
         reviewDiv.className = 'kids-review';
-        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${user}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
+        reviewDiv.innerHTML = `<div class="review-header"><span class="review-user">${userDisplay}</span> <span class="review-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</span></div><div>${text}</div>`;
         currentReviewTarget.appendChild(reviewDiv);
         document.getElementById('kidsReviewModal').style.display = 'none';
       }
