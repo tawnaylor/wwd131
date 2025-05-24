@@ -340,6 +340,35 @@ footer {
   letter-spacing: 1px;
 }
 
+/* Skip to content styles */
+.skiptocontent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+.skiptocontent a {
+  background: #AF1B3F;
+  color: #fff;
+  padding: 8px 16px;
+  margin: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  position: absolute;
+  left: -999px;
+  top: 0;
+}
+.skiptocontent a:focus, .skiptocontent a:active {
+  left: 0;
+  top: 0;
+  outline: 2px solid #131b23;
+}
+
+/* Ensure focus outlines for accessibility */
+a, button, input, select, textarea {
+  outline: none;
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
   .book-review-section {
