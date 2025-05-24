@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A blog for kids to find fun book reviews.">
+  <meta name="author" content="Your Name">
+  <title>Kids Read for Fun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #EFC69B;
+      --red: #AF1B3F;
+      --dark: #473144;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff;
+      color: var(--dark);
+    }
+
+    .skiptocontent a {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--red);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .skiptocontent a:focus {
+      top: 0;
+    }
+
+    header {
+      padding: 1rem;
+      border-bottom: 2px solid var(--gold);
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+
+    nav ul {
+      display: grid;
+      grid-template-columns: 80px 80px 80px;
+      justify-content: end;
+      list-style: none;
+      padding: 0;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    nav li a {
+      display: block;
+      padding: 0.75rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: var(--red);
+      text-align: center;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    article {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1rem;
+    }
+
+    .book-details {
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .book-details time {
+      display: block;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .book-content h2 {
+      font-family: 'Lora', serif;
+      color: var(--red);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .book-image {
+      width: 200px;
+      height: 300px;
+      background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 10px,
+        #eee 10px,
+        #eee 20px
+      );
+      margin-bottom: 0.5rem;
+    }
+
+    aside {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid var(--gold);
+    }
+
+    aside p {
+      color: #888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gold);
+      color: #000;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Blog page loaded.");
+    });
+  </script>
+</head>
+<body>
+  <div class="skiptocontent">
+    <a href="#maincontent">Skip to main content</a>
+  </div>
+
+  <header>
+    <h1>The Family Bookshelf</h1>
+    <nav>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section>
+      <article>
+        <div class="book-details">
+          <time datetime="2022-07-05">July 5, 2022</time>
+          <p>Age: 10–14</p>
+          <p>Genre: Fantasy</p>
+          <p>Rating: ★★★★☆</p>
+        </div>
+        <div class="book-content">
+          <h2>Septimus Heap Book One: Magyk</h2>
+          <div class="book-image"></div>
+          <p>
+            Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at vix ad putent delectus.
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <div class="book-details">
+          <time datetime="2022-07-10">July 10, 2022</time>
+          <p>Age: 9–12</p>
+          <p>Genre: Adventure</p>
+          <p>Rating: ★★★★★</p>
+        </div>
+        <div class="book-content">
+          <h2>The Tale of Despereaux</h2>
+          <div class="book-image"></div>
+          <p>
+            An unlikely hero mouse sets out on a grand quest in this heartwarming tale of bravery and belonging.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <aside>
+      <h3>Filters</h3>
+      <p>Filter form will go here.</p>
+    </aside>
+  </main>
+
+  <footer>
+    &copy; 2025 Kids Read for Fun Blog
+  </footer>
+</body>
+</html>

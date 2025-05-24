@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff8f0;
+  color: #473144;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+  background: #EFC69B;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #AF1B3F;
+}
+
+header h1 {
+  font-family: 'Lora', Impact, serif;
+  color: #AF1B3F;
+  font-size: 2.2em;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #AF1B3F;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #473144;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 20px;
+  color: #473144;
+}
+
+.book-review {
+  text-align: center;
+}
+
+.book-review h2 {
+  font-family: 'Lora', Impact, serif;
+  color: #AF1B3F;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.book-image {
+  width: 200px;
+  height: 300px;
+  margin: 10px auto;
+  border: 2px solid #EFC69B;
+  background: #EFC69B;
+  background-image: linear-gradient(45deg, transparent 49%, #AF1B3F 49%, #AF1B3F 51%, transparent 51%), 
+                    linear-gradient(-45deg, transparent 49%, #AF1B3F 49%, #AF1B3F 51%, transparent 51%);
+  background-size: 100% 100%;
+}
+
+.description {
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 0 20px;
+  color: #473144;
+}
+
+.filters {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #EFC69B;
+  font-size: 14px;
+  color: #473144;
+}
+
+.filters label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.filters select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #EFC69B;
+  background: #fff8f0;
+  color: #473144;
+  font-family: inherit;
+}
+
+/* Import Lora font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
