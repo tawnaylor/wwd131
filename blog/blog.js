@@ -43,7 +43,7 @@ stars: "⭐⭐⭐⭐⭐"
   date: "March 8, 2023",
   description:
     "Nancy Drew embarks on her first mystery, searching for a missing will and uncovering secrets in the old clock.",
-  imgSrc: "C:\Users\tawna\Documents\wwd131\blog\images\91iIvH-exYL._AC_UF1000,1000_QL80_.jpg",
+  imgSrc: "images/91iIvH-exYL._AC_UF1000,1000_QL80_.jpg",
   imgAlt: "Book cover for The Secret of the Old Clock",
   ages: "10-14",
   genre: "Mystery",
