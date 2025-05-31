@@ -1,5 +1,3 @@
-blog js code
-
 const articles = [
 {
 id: 1,
