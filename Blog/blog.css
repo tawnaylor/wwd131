@@ -126,3 +126,62 @@
       background: var(--gold);
       color: #000;
     }
+
+    /* Remove duplicate or conflicting main selector and .post, .details, .content, .date, .meta, .title, .bookcover classes if not used in your HTML.
+   If you are not using these new classes in your HTML, you can safely delete the following block: */
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.post {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2rem;
+}
+
+.details {
+  text-align: right;
+  border-right: 2px solid #ccc;
+  padding: 0 1rem;
+  flex: 1;
+}
+
+.content {
+  flex: 3;
+}
+
+.date {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.meta li {
+  text-align: right;
+  margin-bottom: 0.3rem;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.bookcover {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* If you are not using these classes in your HTML, remove them to avoid confusion and keep your CSS clean. 
+   Otherwise, ensure your HTML uses these classes for consistent styling. */
