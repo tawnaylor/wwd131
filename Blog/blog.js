@@ -1,3 +1,5 @@
+blog js code
+
 const articles = [
 {
 id: 1,
@@ -52,6 +54,7 @@ stars: "⭐⭐⭐⭐⭐"
 ];
 
 const postsContainer = document.querySelector("#posts");
+
 function createArticle(post) {
   const article = document.createElement("article");
   article.className = "article";
@@ -72,4 +75,7 @@ function createArticle(post) {
 
   postsContainer.appendChild(article);
 }
-articles.forEach(createArticle);
+
+if (postsContainer) {
+  articles.forEach(createArticle);
+}
