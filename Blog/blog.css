@@ -1,111 +1,128 @@
-* {
-  box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
-}
+:root {
+      --gold: #EFC69B;
+      --red: #AF1B3F;
+      --dark: #473144;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #fff8f0;
-  color: #473144;
-  font-family: Helvetica, Arial, sans-serif;
-}
+    * {
+      box-sizing: border-box;
+      font-family: Helvetica, Arial, sans-serif;
+    }
 
-header {
-  background: #EFC69B;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid #AF1B3F;
-}
+    body {
+      margin: 0;
+      background-color: #fff;
+      color: var(--dark);
+    }
 
-header h1 {
-  font-family: 'Lora', Impact, serif;
-  color: #AF1B3F;
-  font-size: 2.2em;
-  margin: 0 0 8px 0;
-  letter-spacing: 1px;
-}
+    .skiptocontent a {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--red);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+    }
 
-nav {
-  margin-top: 10px;
-}
+    .skiptocontent a:focus {
+      top: 0;
+    }
 
-nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #AF1B3F;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-nav a:hover {
-  color: #473144;
-}
+    header {
+      padding: 1rem;
+      border-bottom: 2px solid var(--gold);
+      text-align: center;
+    }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 20px;
-  padding: 20px;
-}
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
 
-.sidebar {
-  text-align: center;
-  font-size: 14px;
-  padding-top: 20px;
-  color: #473144;
-}
+    nav ul {
+      display: grid;
+      grid-template-columns: 80px 80px 80px;
+      justify-content: end;
+      list-style: none;
+      padding: 0;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+    }
 
-.book-review {
-  text-align: center;
-}
+    nav li a {
+      display: block;
+      padding: 0.75rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: var(--red);
+      text-align: center;
+    }
 
-.book-review h2 {
-  font-family: 'Lora', Impact, serif;
-  color: #AF1B3F;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.book-image {
-  width: 200px;
-  height: 300px;
-  margin: 10px auto;
-  border: 2px solid #EFC69B;
-  background: #EFC69B;
-  background-image: linear-gradient(45deg, transparent 49%, #AF1B3F 49%, #AF1B3F 51%, transparent 51%), 
-                    linear-gradient(-45deg, transparent 49%, #AF1B3F 49%, #AF1B3F 51%, transparent 51%);
-  background-size: 100% 100%;
-}
+    article {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1rem;
+    }
 
-.description {
-  font-size: 14px;
-  margin-top: 10px;
-  padding: 0 20px;
-  color: #473144;
-}
+    .book-details {
+      text-align: right;
+      font-size: 0.9rem;
+    }
 
-.filters {
-  background: #fff;
-  padding: 20px;
-  border: 1px solid #EFC69B;
-  font-size: 14px;
-  color: #473144;
-}
+    .book-details time {
+      display: block;
+      font-size: 1rem;
+      font-weight: bold;
+    }
 
-.filters label {
-  display: block;
-  margin-bottom: 15px;
-}
+    .book-content h2 {
+      font-family: 'Lora', serif;
+      color: var(--red);
+      margin: 0 0 0.5rem 0;
+    }
 
-.filters select {
-  width: 100%;
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #EFC69B;
-  background: #fff8f0;
-  color: #473144;
-  font-family: inherit;
-}
+    .book-image {
+      width: 200px;
+      height: 300px;
+      background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 10px,
+        #eee 10px,
+        #eee 20px
+      );
+      margin-bottom: 0.5rem;
+    }
 
-/* Import Lora font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+    aside {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid var(--gold);
+    }
+
+    aside p {
+      color: #888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gold);
+      color: #000;
+    }
