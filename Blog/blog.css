@@ -51,7 +51,7 @@ nav > ul {
   border-top: 2px solid #EFC69B;
   border-bottom: 2px solid #EFC69B;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   justify-content: end;
   justify-items: end;
   padding: 1rem 0;
