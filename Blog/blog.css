@@ -126,10 +126,6 @@
       background: var(--gold);
       color: #000;
     }
-
-    /* Remove duplicate or conflicting main selector and .post, .details, .content, .date, .meta, .title, .bookcover classes if not used in your HTML.
-   If you are not using these new classes in your HTML, you can safely delete the following block: */
-
 main {
   max-width: 960px;
   margin: 0 auto;
@@ -183,5 +179,4 @@ main {
   height: auto;
 }
 
-/* If you are not using these classes in your HTML, remove them to avoid confusion and keep your CSS clean. 
-   Otherwise, ensure your HTML uses these classes for consistent styling. */
+
