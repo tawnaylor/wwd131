@@ -4,8 +4,9 @@
   --dark: #473144;
 }
 
-/* Import Lora from Google Fonts */
+/* Import Lora and Knewave from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
 * {
   box-sizing: border-box;
@@ -41,6 +42,7 @@ header h1 {
   text-align: center;
   padding: 2rem 1rem 1rem;
   margin-bottom: 0.5rem;
+  font-family: 'Knewave', cursive;
 }
 
 /* Navigation grid */
@@ -324,4 +326,11 @@ main, .main-content {
 .book-details,
 .book-details time {
   text-align: left !important;
+}
+
+.book .title,
+.article .content h2 {
+  color: #AF1B3F;
+  font-family: 'Lora', serif;
+  font-weight: bold;
 }
