@@ -129,6 +129,53 @@ article {
   padding-bottom: 1rem;
 }
 
+/* Article grid: details left, content right */
+.article {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  background: #fff;
+}
+
+/* Details column (date, age, genre, stars) */
+.article .details {
+  display: grid;
+  gap: 0.5rem;
+  text-align: left;
+  justify-items: start;
+  font-size: 1rem;
+  color: #473144;
+  padding-top: 0.5rem;
+}
+
+/* Make each detail line up vertically */
+.article .details p,
+.article .details span {
+  margin: 0;
+  padding: 0;
+}
+
+/* Content column */
+.article .content {
+  /* ...existing code or custom styles... */
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 700px) {
+  .article {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .article .details {
+    justify-items: start;
+    text-align: left;
+  }
+}
+
 .book-details {
   text-align: right;
   font-size: 0.9rem;
@@ -230,4 +277,11 @@ nav ul {
   .article {
     grid-template-columns: 1fr;
   }
+}
+
+.book .meta,
+.book .info,
+.book-details,
+.book-details time {
+  text-align: left !important;
 }
