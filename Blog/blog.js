@@ -44,7 +44,7 @@ const postsContainer = document.querySelector("#posts");
 // Function to create one article
 function createArticle(post) {
   const article = document.createElement("article");
-  article.classList.add("article");
+  article.className = "article";
 
   article.innerHTML = `
     <div class="details">
