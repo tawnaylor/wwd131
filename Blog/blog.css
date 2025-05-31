@@ -141,9 +141,10 @@ article {
   background: #fff;
 }
 
-/* Details column (date, age, genre, stars) */
+/* Details column (date, age, genre, stars) as a vertical grid, left-aligned */
 .article .details {
   display: grid;
+  grid-template-rows: repeat(4, auto);
   gap: 0.5rem;
   text-align: left;
   justify-items: start;
@@ -162,9 +163,11 @@ article {
 /* Content column */
 .article .content {
   /* ...existing code or custom styles... */
+  border-left: 2px solid #EFC69B;
+  padding-left: 2rem;
 }
 
-/* Responsive: stack columns on small screens */
+/* Responsive: remove dividing line on small screens */
 @media (max-width: 700px) {
   .article {
     grid-template-columns: 1fr;
@@ -173,6 +176,10 @@ article {
   .article .details {
     justify-items: start;
     text-align: left;
+  }
+  .article .content {
+    border-left: none;
+    padding-left: 0;
   }
 }
 

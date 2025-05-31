@@ -44,13 +44,18 @@ const postsContainer = document.querySelector("#posts");
 // Function to create one article
 function createArticle(post) {
   const article = document.createElement("article");
-  article.classList.add("book");
+  article.classList.add("article");
 
   article.innerHTML = `
-    <img src="${post.imgSrc}" alt="${post.imgAlt}">
-    <div class="info">
-      <div class="title">${post.title}</div>
-      <div class="meta">${post.date} • Ages: ${post.ages} • ${post.genre} • ${post.stars}</div>
+    <div class="details">
+      <p>${post.date}</p>
+      <p>Ages: ${post.ages}</p>
+      <p>Genre: ${post.genre}</p>
+      <p>${post.stars}</p>
+    </div>
+    <div class="content">
+      <h2>${post.title}</h2>
+      <img src="${post.imgSrc}" alt="${post.imgAlt}">
       <p>${post.description}</p>
     </div>
   `;
