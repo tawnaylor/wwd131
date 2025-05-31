@@ -36,12 +36,22 @@ imgAlt: "Book cover for Pawn of Prophecy",
 ages: "12-16",
 genre: "Fantasy",
 stars: "⭐⭐⭐⭐⭐"
+},
+{
+  id: 4,
+  title: "The Secret of the Old Clock",
+  date: "March 8, 2023",
+  description:
+    "Nancy Drew embarks on her first mystery, searching for a missing will and uncovering secrets in the old clock.",
+  imgSrc: "images/91iIvH-exYL._AC_UF1000,1000_QL80_.jpg",
+  imgAlt: "Book cover for The Secret of the Old Clock",
+  ages: "10-14",
+  genre: "Mystery",
+  stars: "⭐⭐⭐⭐"
 }
 ];
 
 const postsContainer = document.querySelector("#posts");
-
-// Function to create one article
 function createArticle(post) {
   const article = document.createElement("article");
   article.className = "article";
@@ -62,6 +72,4 @@ function createArticle(post) {
 
   postsContainer.appendChild(article);
 }
-
-// Loop through all articles and create them
 articles.forEach(createArticle);
