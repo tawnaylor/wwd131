@@ -15,7 +15,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: #fff;
-  color: #473144; /* dark color for text */
+  color: #473144;
   margin: 0;
   padding: 0;
 }
@@ -26,7 +26,7 @@ a {
 }
 
 a:hover {
-  color: #EFC69B; /* gold hover */
+  color: #EFC69B;
 }
 
 header {
@@ -37,9 +37,9 @@ header {
 }
 
 header h1 {
-  font-size: 2.5rem;         /* Increase size of title */
-  text-align: center;        /* Center the title */
-  padding: 2rem 1rem 1rem;   /* Add spacing around the title */
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -48,21 +48,21 @@ nav > ul {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 900px;           /* Restrict width to align with content */
-  border-top: 2px solid #ccc; /* Top border line */
-  border-bottom: 2px solid #ccc; /* Bottom border line */
+  max-width: 900px;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: end;
   justify-items: end;
-  padding: 1rem 0;            /* Add vertical space (navbar height) */
+  padding: 1rem 0;
 }
 
 nav ul li a {
-  font-size: 1.2rem;          /* Larger font for links */
+  font-size: 1.2rem;
   padding: 0.5rem;
   display: inline-block;
-  line-height: 2;             /* Increase height of clickable area */
+  line-height: 2;
 }
 
 main {
@@ -125,7 +125,7 @@ main {
 
 article {
   display: grid;
-  grid-template-columns: 1fr 3fr; /* Adjust ratio as needed */
+  grid-template-columns: 1fr 3fr;
   gap: 1rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid #ddd;
@@ -187,7 +187,6 @@ article {
 
 /* Content column */
 .article .content {
-  /* ...existing code or custom styles... */
   border-left: 2px solid #EFC69B;
   padding-left: 2rem;
 }
@@ -205,6 +204,15 @@ article {
   .article .content {
     border-left: none;
     padding-left: 0;
+  }
+  .book {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .book img {
+    width: 120px;
+    height: 180px;
   }
 }
 
@@ -295,18 +303,6 @@ main, .main-content {
 }
 
 /* Responsive adjustments */
-@media (max-width: 700px) {
-  .book {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .book img {
-    width: 120px;
-    height: 180px;
-  }
-}
-
 @media (max-width: 900px) {
   .main-content {
     grid-template-columns: 1fr;
