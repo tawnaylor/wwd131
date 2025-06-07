@@ -67,7 +67,7 @@ form {
   justify-content: flex-end;
   align-items: flex-end;
   gap: 1rem;
-  min-height:200px;
+  min-height: 220px;
   min-width: 320px;
   max-width: 380px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.35), 0 0 0 4px #fff2;
