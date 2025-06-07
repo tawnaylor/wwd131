@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="creditcard.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Credit card payment form" />
+  <meta name="author" content="Your Name" />
+  <title>Credit Card Payment</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="creditcard.css" />
+  <script defer src="creditcard.js"></script>
 </head>
 <body>
-    
-    <script src="creditcard.js"></script>
+  <main class="form-container">
+    <form id="credit-form">
+      <div class="card-grid">
+        <div class="card card-front">
+          <p class="total">TOTAL: $199</p>
+          <img src="favicon-32x32.png" alt="Card Logo" class="card-image" />
+          
+          <label for="card-number">Card Number</label>
+          <input id="card-number" name="card-number" type="text" placeholder="1234 5678 9101 1020" required pattern="\d{4} \d{4} \d{4} \d{4}" />
+          
+          <label for="card-holder">Card Holder</label>
+          <input id="card-holder" name="card-holder" type="text" placeholder="John Doe" required />
+
+          <label for="exp-date">Expiration</label>
+          <input id="exp-date" name="exp-date" type="text" placeholder="MM/YY" required pattern="\d{2}/\d{2}" />
+        </div>
+
+        <div class="card card-back">
+          <div class="black-bar"></div>
+          <label for="cvv">CVV</label>
+          <input id="cvv" name="cvv" type="text" placeholder="xxx" required pattern="\d{3}" />
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
 </body>
 </html>

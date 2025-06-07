@@ -1,0 +1,159 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 2rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-areas: 
+    "front"
+    "back";
+  gap: 1rem;
+  position: relative;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  color: #fff;
+  min-height: 220px;
+  min-width: 320px;
+  max-width: 380px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.card-front {
+  grid-area: front;
+  z-index: 2;
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+  color: #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  min-height: 220px;
+  min-width: 320px;
+  max-width: 380px;
+}
+
+.card-back {
+  grid-area: back;
+  z-index: 1;
+  position: relative;
+  background: linear-gradient(135deg, #8679cc 0%, #4c7eb1 100%);
+  color: #fff;
+  display: grid;
+  gap: 1rem;
+  min-height: 220px;
+  min-width: 320px;
+  max-width: 380px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.card-image {
+  justify-self: end;
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.total {
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+label {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  margin-bottom: 0.5rem;
+  outline: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background 0.2s;
+}
+
+input::placeholder {
+  color: #e0e0e0;
+  opacity: 0.8;
+}
+
+input:focus {
+  background: rgba(255,255,255,0.25);
+}
+
+.card-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.expiration .exp-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.black-bar {
+  background-color: #222;
+  height: 40px;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+  color: #4e54c8;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(80,60,40,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+  background: #4e54c8;
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .card-grid {
+    grid-template-areas: "front back";
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .card-back {
+    margin-top: 0;
+  }
+}
