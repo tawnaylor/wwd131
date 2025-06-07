@@ -14,24 +14,33 @@
   <main class="form-container">
     <form id="credit-form">
       <div class="card-grid">
-        <div class="card card-front">
+        <div class="card card-front" style="min-height:220px; min-width:320px; max-width:380px;">
           <p class="total">TOTAL: $199</p>
           <img src="favicon-32x32.png" alt="Card Logo" class="card-image" />
           
           <label for="card-number">Card Number</label>
           <input id="card-number" name="card-number" type="text" placeholder="1234 5678 9101 1020" required pattern="\d{4} \d{4} \d{4} \d{4}" />
           
-          <label for="card-holder">Card Holder</label>
-          <input id="card-holder" name="card-holder" type="text" placeholder="John Doe" required />
-
-          <label for="exp-date">Expiration</label>
-          <input id="exp-date" name="exp-date" type="text" placeholder="MM/YY" required pattern="\d{2}/\d{2}" />
+          <div class="card-bottom-row" style="display: flex; gap: 1.5rem;">
+            <div style="flex:1;">
+              <label for="card-holder">Card Holder</label>
+              <input id="card-holder" name="card-holder" type="text" placeholder="John Doe" required style="width:120px;" />
+            </div>
+            <div style="flex:1;">
+              <label for="exp-month">Expiration</label>
+              <div style="display: flex; gap: 6px;">
+                <input id="exp-month" name="exp-month" type="text" placeholder="MM" required pattern="\d{2}" style="width:36px;" maxlength="2" />
+                <span style="align-self:center;">/</span>
+                <input id="exp-year" name="exp-year" type="text" placeholder="YY" required pattern="\d{2}" style="width:36px;" maxlength="2" />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="card card-back">
           <div class="black-bar"></div>
           <label for="cvv">CVV</label>
-          <input id="cvv" name="cvv" type="text" placeholder="xxx" required pattern="\d{3}" />
+          <input id="cvv" name="cvv" type="text" placeholder="xxx" required pattern="\d{3}" style="width:60px; float:right; text-align:right;" />
         </div>
       </div>
       <button type="submit">Submit</button>
