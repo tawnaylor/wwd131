@@ -19,28 +19,28 @@
           <img src="favicon-32x32.png" alt="Card Logo" class="card-image" />
           
           <label for="card-number">Card Number</label>
-          <input id="card-number" name="card-number" type="text" placeholder="1234 5678 9101 1020" required pattern="\d{4} \d{4} \d{4} \d{4}" />
-          
+          <input id="card-number" name="card-number" type="text" placeholder="1234 5678 9101 1020" required pattern="\d{4} \d{4} \d{4} \d{4}" autocomplete="cc-number" inputmode="numeric" aria-label="Card Number" />
+
           <div class="card-bottom-row" style="display: flex; gap: 1.5rem;">
             <div style="flex:1;">
               <label for="card-holder">Card Holder</label>
-              <input id="card-holder" name="card-holder" type="text" placeholder="John Doe" required style="width:120px;" />
+              <input id="card-holder" name="card-holder" type="text" placeholder="John Doe" required style="width:120px;" autocomplete="cc-name" aria-label="Card Holder Name" />
             </div>
             <div style="flex:1;">
               <label for="exp-month">Expiration</label>
               <div style="display: flex; gap: 6px;">
-                <input id="exp-month" name="exp-month" type="text" placeholder="MM" required pattern="\d{2}" style="width:36px;" maxlength="2" />
+                <input id="exp-month" name="exp-month" type="text" placeholder="MM" required pattern="\d{2}" style="width:36px;" maxlength="2" autocomplete="cc-exp-month" inputmode="numeric" aria-label="Expiration Month" />
                 <span style="align-self:center;">/</span>
-                <input id="exp-year" name="exp-year" type="text" placeholder="YY" required pattern="\d{2}" style="width:36px;" maxlength="2" />
+                <input id="exp-year" name="exp-year" type="text" placeholder="YY" required pattern="\d{2}" style="width:36px;" maxlength="2" autocomplete="cc-exp-year" inputmode="numeric" aria-label="Expiration Year" />
               </div>
             </div>
           </div>
         </div>
 
-        <div class="card card-back">
+        <div class="card card-back" aria-label="Credit Card Back">
           <div class="black-bar"></div>
           <label for="cvv">CVV</label>
-          <input id="cvv" name="cvv" type="text" placeholder="xxx" required pattern="\d{3}" style="width:60px; float:right; text-align:right;" />
+          <input id="cvv" name="cvv" type="text" placeholder="xxx" required pattern="\d{3}" style="width:60px; float:right; text-align:right;" autocomplete="cc-csc" inputmode="numeric" aria-label="CVV" />
         </div>
       </div>
       <button type="submit">Submit</button>

@@ -16,9 +16,12 @@ form {
 }
 
 .card-grid {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
   min-height: 260px;
+  height: 260px;
 }
 
 .card {
@@ -190,22 +193,22 @@ button:active {
 
 @media (max-width: 900px) {
   .card-grid {
-    display: grid;
-    grid-template-areas:
-      "front"
-      "back";
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    min-height: unset;
+    min-height: 260px;
+    height: 260px;
   }
   .card-front,
   .card-back {
-    position: static;
+    position: absolute;
+    min-width: 220px;
+    max-width: 95vw;
+  }
+  .card-front {
     left: 0;
     top: 0;
-    transform: none;
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 100%;
+  }
+  .card-back {
+    left: 40%;
+    top: 80px;
+    transform: translateX(-50%);
   }
 }
