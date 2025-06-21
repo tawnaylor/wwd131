@@ -3,54 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Recipe Book</title>
+  <title>RecipeBook</title>
   <link rel="stylesheet" href="recipes.css" />
-  <meta name="description" content="A collection of tasty, simple recipes.">
+  <meta name="description" content="A collection of delicious recipes.">
 
   <!-- Social Media Meta Tags -->
-  <meta property="og:title" content="My Recipe Book">
+  <meta property="og:title" content="RecipeBook">
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="A collection of tasty, simple recipes.">
+  <meta property="og:description" content="A collection of delicious recipes.">
   <meta property="og:image" content="images/recipe-book.png">
   <meta property="og:url" content="https://your-site-url.com/recipes">
   <meta name="twitter:card" content="summary_large_image">
 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <img src="images/recipe-book.png" alt="Recipe Book Logo" />
-    <h1>My Recipe Book</h1>
+    <img src="images/recipe-book.png" alt="Recipe Book Logo" class="logo" />
+    <h1>RecipeBook</h1>
   </header>
 
   <main>
     <form class="search-form">
-      <input type="text" placeholder="Search recipes..." aria-label="Search recipes" />
-      <button type="submit">Search</button>
+      <input type="text" placeholder="Find a recipe" aria-label="Find a recipe" />
+      <button type="submit" aria-label="Search">🔍</button>
     </form>
 
     <section class="recipes">
-      <!-- Example Recipe (JS will generate more) -->
       <article class="recipe">
-        <img src="images/sample-recipe.jpg" alt="Tasty Dish" />
-        <h2>Sample Recipe</h2>
-        <span
-          class="rating"
-          role="img"
-          aria-label="Rating: 4 out of 5 stars"
-        >
-          <span aria-hidden="true" class="icon-star">⭐</span>
-          <span aria-hidden="true" class="icon-star">⭐</span>
-          <span aria-hidden="true" class="icon-star">⭐</span>
-          <span aria-hidden="true" class="icon-star">⭐</span>
-          <span aria-hidden="true" class="icon-star-empty">☆</span>
-        </span>
-        <p class="description">Delicious and easy to make!</p>
+        <img src="images/apple-crisp.jpg" alt="Apple Crisp" />
+        <div class="recipe-content">
+          <span class="tag">dessert</span>
+          <h2 class="title">Apple Crisp</h2>
+          <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
+            <span aria-hidden="true" class="icon-star">⭐</span>
+            <span aria-hidden="true" class="icon-star">⭐</span>
+            <span aria-hidden="true" class="icon-star">⭐</span>
+            <span aria-hidden="true" class="icon-star">⭐</span>
+            <span aria-hidden="true" class="icon-star-empty">☆</span>
+          </span>
+          <p class="description">This apple crisp recipe is a simple yet delicious fall dessert that's great served warm with vanilla ice cream.</p>
+        </div>
       </article>
     </section>
   </main>
 
   <footer>
-    <p style="font-size: 0.6em;">
+    <p class="attribution">
       <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
     </p>
     <div class="social">

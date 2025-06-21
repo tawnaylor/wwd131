@@ -8,12 +8,15 @@ recipes.forEach(recipe => {
 
   article.innerHTML = `
     <img src="${recipe.image}" alt="${recipe.title}" />
-    <h2>${recipe.title}</h2>
-    <span class="rating" role="img" aria-label="Rating: ${recipe.rating} out of 5 stars">
-      ${[...Array(recipe.rating)].map(() => '<span aria-hidden="true" class="icon-star">⭐</span>').join('')}
-      ${[...Array(5 - recipe.rating)].map(() => '<span aria-hidden="true" class="icon-star-empty">☆</span>').join('')}
-    </span>
-    <p class="description">${recipe.description}</p>
+    <div class="recipe-content">
+      <span class="tag">${recipe.category}</span>
+      <h2 class="title">${recipe.title}</h2>
+      <span class="rating" role="img" aria-label="Rating: ${recipe.rating} out of 5 stars">
+        ${'⭐'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}
+      </span>
+      <p class="description">${recipe.description}</p>
+    </div>
   `;
+
   recipesContainer.appendChild(article);
 });
