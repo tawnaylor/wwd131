@@ -18,15 +18,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img src="images/recipe-book.png" alt="Recipe Book Logo" class="logo" />
+  <header style="display: flex; align-items: center; gap: 1rem; justify-content: center;">
+    <img src="images/recipe-book.png" alt="Recipe Book Logo" class="logo" style="height: 88px; width: 88px;" />
     <h1>RecipeBook</h1>
   </header>
 
   <main>
     <form class="search-form">
       <input type="text" placeholder="Find a recipe" aria-label="Find a recipe" />
-      <button type="submit" aria-label="Search">🔍</button>
+      <button type="submit" aria-label="Search">
+        <img src="images/search.svg" alt="Search" style="height:1em;width:1em;vertical-align:middle;" />
+      </button>
     </form>
 
     <section class="recipes">
