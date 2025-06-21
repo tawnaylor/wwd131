@@ -112,8 +112,13 @@ footer {
 
 .social {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: 1rem;
+}
+
+.social img {
+  height: 48px;
+  width: 48px;
 }
 
 @media (min-width: 600px) {
