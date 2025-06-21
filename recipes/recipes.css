@@ -32,10 +32,8 @@ header {
   height: 600px;
 }
 
-h1 {
-  font-family: var(--secondary-font);
-  font-size: 2.5rem;
-  margin: 0.5rem 0 0;
+h1, .title, .tag, .description, .attribution, .social, .search-form input, .search-form button, .rating {
+  font-weight: bold;
 }
 
 .search-form {
