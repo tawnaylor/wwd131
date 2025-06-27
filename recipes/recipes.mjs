@@ -5,7 +5,7 @@ const recipes = [
     rating: 4,
     tags: ["Dessert", "Fruit"],
     ingredients: ["apples", "oats", "sugar", "butter"],
-    image: "./images/apple-crisp.jpg"
+    image: "images/apple-crisp.jpg"
   },
   {
     name: "Berry Smoothie",
@@ -13,7 +13,7 @@ const recipes = [
     rating: 5,
     tags: ["Drink", "Healthy"],
     ingredients: ["berries", "yogurt", "banana"],
-    image: "./images/berry-smoothie.jpg"
+    image: "images/mixed-berry-smoothie-2.jpg"
   }
 ];
 export default recipes;
