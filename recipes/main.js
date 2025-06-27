@@ -1,12 +1,15 @@
-import recipes from './recipes.mjs';
+import recipes from './recipes.js';
 
 function random(num) {
-  return Math.floor(Math.random() * num);
+	return Math.floor(Math.random() * num);
 }
 
 function getRandomListEntry(list) {
-  return list[random(list.length)];
+	const listLength = list.length;
+	const randomNum = random(listLength);
+	return list[randomNum];
 }
+console.log(getRandomListEntry(recipes));
 
 function tagsTemplate(tags) {
   return tags.map(tag => `<li>${tag}</li>`).join('');
@@ -81,4 +84,5 @@ if (searchForm) {
   searchForm.addEventListener("submit", searchHandler);
 }
 
+init();
 init();

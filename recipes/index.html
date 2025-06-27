@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RecipeBook</title>
+  <title>Recipe Book</title>
   <link rel="stylesheet" href="recipes.css" />
   <meta name="description" content="A collection of delicious recipes.">
 
@@ -24,14 +24,13 @@
   </header>
 
   <main>
-    <form class="search-form">
-      <input type="text" placeholder="Find a recipe" aria-label="Find a recipe" />
+    <form id="search-form" class="search-form">
+      <input type="text" id="search-input" placeholder="Find a recipe" aria-label="Find a recipe" />
       <button type="submit" aria-label="Search">
         <img src="images/search.svg" alt="Search" style="height:1em;width:1em;vertical-align:middle;" />
       </button>
     </form>
-
-    <section class="recipes">
+  <section class="recipes">
       <article class="recipe">
         <img src="images/apple-crisp.jpg" alt="Apple Crisp" />
         <div class="recipe-content">
@@ -48,6 +47,8 @@
         </div>
       </article>
     </section>
+
+    <section id="recipes" class="recipes" aria-live="polite"></section>
   </main>
 
   <footer>
