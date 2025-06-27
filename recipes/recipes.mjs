@@ -1,20 +1,19 @@
 const recipes = [
   {
     name: "Apple Crisp",
-    description: "This apple crisp recipe is a simple yet delicious fall dessert that's great served warm with vanilla ice cream.",
+    description: "A delicious warm dessert with apples and oats.",
     rating: 4,
     tags: ["Dessert", "Fruit"],
-    ingredients: ["apples", "oats", "butter", "sugar"],
+    ingredients: ["apples", "oats", "sugar", "butter"],
     image: "./images/apple-crisp.jpg"
   },
   {
     name: "Berry Smoothie",
-    description: "A refreshing drink packed with antioxidants and vitamins.",
+    description: "A refreshing smoothie full of berries and nutrients.",
     rating: 5,
     tags: ["Drink", "Healthy"],
-    ingredients: ["strawberries", "blueberries", "banana", "yogurt"],
+    ingredients: ["berries", "yogurt", "banana"],
     image: "./images/berry-smoothie.jpg"
   }
 ];
-
 export default recipes;
