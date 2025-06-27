@@ -44,31 +44,41 @@ function recipeTemplate(recipe) {
 
 function renderRecipes(recipeList) {
   const container = document.querySelector("#recipes");
-  container.innerHTML = recipeList.map(recipeTemplate).join('');
+  if (container) {
+    container.innerHTML = recipeList.map(recipeTemplate).join('');
+  }
 }
 
 function init() {
-  const recipe = getRandomListEntry(recipes);
-  renderRecipes([recipe]);
+  if (document.getElementById("search-form")) {
+    const recipe = getRandomListEntry(recipes);
+    renderRecipes([recipe]);
+  }
 }
 
 function filterRecipes(query) {
+  if (!query) return recipes.slice().sort((a, b) => a.name.localeCompare(b.name));
   return recipes.filter(recipe => {
     const inName = recipe.name.toLowerCase().includes(query);
     const inDesc = recipe.description.toLowerCase().includes(query);
-    const inTags = recipe.tags.find(tag => tag.toLowerCase().includes(query));
-    const inIngredients = recipe.ingredients.find(ing => ing.toLowerCase().includes(query));
+    const inTags = recipe.tags.some(tag => tag.toLowerCase().includes(query));
+    const inIngredients = recipe.ingredients.some(ing => ing.toLowerCase().includes(query));
     return inName || inDesc || inTags || inIngredients;
   }).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function searchHandler(event) {
   event.preventDefault();
-  const query = document.getElementById("search-input").value.toLowerCase();
+  const input = document.getElementById("search-input");
+  if (!input) return;
+  const query = input.value.toLowerCase();
   const results = filterRecipes(query);
   renderRecipes(results);
 }
 
-document.getElementById("search-form").addEventListener("submit", searchHandler);
+const searchForm = document.getElementById("search-form");
+if (searchForm) {
+  searchForm.addEventListener("submit", searchHandler);
+}
 
 init();
