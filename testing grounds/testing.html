@@ -1,0 +1,18 @@
+<!-- index.html -->
+<form id="uploadForm" enctype="multipart/form-data">
+  <input type="file" name="pdf" accept=".pdf" required />
+  <button type="submit">Upload Recipe</button>
+</form>
+
+<script>
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const response = await fetch('/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    alert(result.message);
+  });
+</script>
