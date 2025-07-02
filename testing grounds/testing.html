@@ -1,18 +1,32 @@
-<!-- index.html -->
-<form id="uploadForm" enctype="multipart/form-data">
-  <input type="file" name="pdf" accept=".pdf" required />
-  <button type="submit">Upload Recipe</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe Uploader</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Recipe Uploader</h1>
 
-<script>
-  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const response = await fetch('/upload', {
-      method: 'POST',
-      body: formData
-    });
-    const result = await response.json();
-    alert(result.message);
-  });
-</script>
+  <form id="recipeForm">
+    <input type="text" id="title" placeholder="Recipe Title" required />
+    <textarea id="instructions" placeholder="Recipe Instructions" required></textarea>
+    <input type="file" id="image" accept="image/*" required />
+    <button type="submit">Add Recipe</button>
+  </form>
+
+  <ul id="recipeList"></ul>
+
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <span id="closePopup">&times;</span>
+      <h2 id="popupTitle"></h2>
+      <img id="popupImage" />
+      <p id="popupInstructions"></p>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
