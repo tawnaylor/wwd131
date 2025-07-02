@@ -52,8 +52,15 @@ form {
   right: 15px;
   font-size: 24px;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: #333;
+}
+
+#closePopup:focus {
+  outline: 2px solid #1B98E0;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }

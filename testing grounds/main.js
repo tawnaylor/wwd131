@@ -11,9 +11,11 @@ const popupInstructions = document.getElementById('popupInstructions');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const title = document.getElementById('title').value;
-  const instructions = document.getElementById('instructions').value;
+  const title = document.getElementById('title').value.trim();
+  const instructions = document.getElementById('instructions').value.trim();
   const imageFile = document.getElementById('image').files[0];
+
+  if (!title || !instructions || !imageFile) return;
 
   const reader = new FileReader();
   reader.onload = function () {
@@ -24,9 +26,7 @@ form.addEventListener('submit', (e) => {
     form.reset();
   };
 
-  if (imageFile) {
-    reader.readAsDataURL(imageFile);
-  }
+  reader.readAsDataURL(imageFile);
 });
 
 function displayRecipes() {
@@ -34,7 +34,14 @@ function displayRecipes() {
   recipes.forEach((recipe, index) => {
     const li = document.createElement('li');
     li.textContent = recipe.title;
+    li.tabIndex = 0;
+    li.setAttribute('role', 'button');
     li.addEventListener('click', () => openPopup(index));
+    li.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        openPopup(index);
+      }
+    });
     list.appendChild(li);
   });
 }
@@ -44,9 +51,16 @@ function openPopup(index) {
   popupTitle.textContent = recipe.title;
   popupInstructions.textContent = recipe.instructions;
   popupImage.src = recipe.image;
+  popupImage.alt = recipe.title;
   popup.classList.remove('hidden');
+  closeBtn.focus();
 }
 
 closeBtn.addEventListener('click', () => {
   popup.classList.add('hidden');
+  // Return focus to the recipe list for accessibility
+  list.querySelector('li[tabindex="0"]')?.focus();
 });
+
+// Initialize the recipe list on page load
+displayRecipes();
