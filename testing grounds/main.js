@@ -30,18 +30,12 @@ form.addEventListener('submit', (e) => {
 });
 
 function displayRecipes() {
-  list.innerHTML = '';
+  list.innerHTML = ''; // clear old list
+
   recipes.forEach((recipe, index) => {
     const li = document.createElement('li');
     li.textContent = recipe.title;
-    li.tabIndex = 0;
-    li.setAttribute('role', 'button');
     li.addEventListener('click', () => openPopup(index));
-    li.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        openPopup(index);
-      }
-    });
     list.appendChild(li);
   });
 }
@@ -58,6 +52,12 @@ function openPopup(index) {
 
 closeBtn.addEventListener('click', () => {
   popup.classList.add('hidden');
+  // Return focus to the recipe list for accessibility
+  list.querySelector('li[tabindex="0"]')?.focus();
+});
+
+// Initialize the recipe list on page load
+displayRecipes();
   // Return focus to the recipe list for accessibility
   list.querySelector('li[tabindex="0"]')?.focus();
 });
