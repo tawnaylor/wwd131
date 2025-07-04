@@ -1,4 +1,4 @@
-import { recipes } from './recipes.js';
+import { recipes } from './recipes.mjs';
 
 const dayContainer = document.getElementById('days');
 const groceryList = {};
@@ -9,21 +9,36 @@ const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 
 days.forEach(day => {
   plannerState[day] = [];
+
   const div = document.createElement('div');
   div.className = 'day';
   div.dataset.day = day;
   div.innerHTML = `<h4>${day}</h4>`;
 
-  div.addEventListener('dragover', e => e.preventDefault());
-  div.addEventListener('drop', e => {
-    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-    const item = document.createElement('div');
-    item.className = 'meal';
-    item.textContent = data.name;
-    div.appendChild(item);
+  // Allow drop
+  div.addEventListener('dragover', e => {
+    e.preventDefault();
+  });
 
-    plannerState[day].push(data);
-    updateState(data);
+  // Handle drop
+  div.addEventListener('drop', e => {
+    e.preventDefault();
+    console.log(`Drop on ${div.dataset.day}`);
+
+    try {
+      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+      console.log('Dropped meal:', data);
+
+      const item = document.createElement('div');
+      item.className = 'meal';
+      item.textContent = data.name;
+      div.appendChild(item);
+
+      plannerState[div.dataset.day].push(data); // ✅ correct day assignment
+      updateState(data);
+    } catch (err) {
+      console.error('Drop error:', err);
+    }
   });
 
   dayContainer.appendChild(div);
@@ -36,9 +51,12 @@ function renderRecipes() {
     div.className = 'meal';
     div.draggable = true;
     div.textContent = recipe.name;
+
     div.addEventListener('dragstart', e => {
+      console.log('Dragging:', recipe.name);
       e.dataTransfer.setData('text/plain', JSON.stringify(recipe));
     });
+
     container.appendChild(div);
   });
 }
@@ -74,6 +92,7 @@ function saveToLocalStorage() {
     groceryList,
     nutritionTotals
   }));
+  console.log('Saved to localStorage');
 }
 
 function loadFromLocalStorage() {
@@ -112,6 +131,7 @@ document.getElementById('reset').addEventListener('click', () => {
   updateGroceryList();
   updateNutrition();
   localStorage.removeItem('mealPlanner');
+  console.log('Reset planner and cleared localStorage');
 });
 
 document.getElementById('save').addEventListener('click', () => {
