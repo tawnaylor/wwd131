@@ -52,15 +52,15 @@ function openPopup(index) {
 
 closeBtn.addEventListener('click', () => {
   popup.classList.add('hidden');
-  // Return focus to the recipe list for accessibility
-  list.querySelector('li[tabindex="0"]')?.focus();
 });
 
 // Initialize the recipe list on page load
 displayRecipes();
+// Initialize the recipe list on page load
+displayRecipes();
   // Return focus to the recipe list for accessibility
   list.querySelector('li[tabindex="0"]')?.focus();
-});
+;
 
 // Initialize the recipe list on page load
 displayRecipes();
