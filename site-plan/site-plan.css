@@ -19,6 +19,10 @@ header, footer {
   padding: 1rem;
 }
 
+header {
+  text-align: center;
+}
+
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   color: #6c1f25; /* wine red for elegance */
