@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
 /* Reset & Box-model */
 * {
   margin: 0;
@@ -139,5 +140,4 @@ footer {
   line-height: 1.2;
 }
 }
-
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
